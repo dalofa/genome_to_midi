@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genbank-to-midi"
+version = "0.1.0"
+description = "Convert GenBank sequences and gene annotations into MIDI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "biopython>=1.81",
+    "mido>=1.3",
+    "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+genbank-to-midi = "genbank_to_midi.cli:main"
+midi-to-visualization = "genbank_to_midi.visualize_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
